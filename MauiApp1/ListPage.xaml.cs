@@ -21,30 +21,8 @@ public partial class ListPage : ContentPage
         await App.Database.DeleteReservationAsync(slist);
         await Navigation.PopAsync();
     }
-    async void OnChooseButtonClicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new RoutePage((Reservation)
-       this.BindingContext)
-        {
-            BindingContext = new Route()
-        });
-
-    }
-    async void OnChooseButtonClickedd(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new DateAndTimePage((Reservation)
-       this.BindingContext)
-        {
-            BindingContext = new DateTimee()
-        });
-
-    }
-    protected override async void OnAppearing()
-    {
-        base.OnAppearing();
-        var rez = (Reservation)BindingContext;
-
-        listView.ItemsSource = await App.Database.GetListRouteAsync(rez.ID);
-    }
+   
+    
+  
 
 }
