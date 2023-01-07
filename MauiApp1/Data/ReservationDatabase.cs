@@ -56,6 +56,12 @@ namespace MauiApp1.Data
                 return _database.InsertAsync(route);
             }
         }
+        public Task<int> DeleteRouteAsync(Route route)
+        {
+            
+                return _database.DeleteAsync(route);
+           
+        }
 
     }
 }

@@ -15,4 +15,11 @@ public partial class RoutePage : ContentPage
         await App.Database.SaveRouteAsync(route);
         await Navigation.PopAsync();
     }
+
+    async void OnDeleteButtonClicked(object sender, EventArgs e)
+    {
+        var route = (Route)BindingContext;
+        await App.Database.DeleteRouteAsync(route);
+        await Navigation.PopAsync();
+    }
 }
