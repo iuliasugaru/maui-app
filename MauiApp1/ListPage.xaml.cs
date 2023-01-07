@@ -12,6 +12,8 @@ public partial class ListPage : ContentPage
     {
         var slist = (Reservation)BindingContext;
         slist.Date = DateTime.UtcNow;
+        Route selectedRoute = (RoutePicker.SelectedItem as Route);
+        slist.RouteID = selectedRoute.ID;
         await App.Database.SaveReservationAsync(slist);
         await Navigation.PopAsync();
     }
@@ -21,8 +23,20 @@ public partial class ListPage : ContentPage
         await App.Database.DeleteReservationAsync(slist);
         await Navigation.PopAsync();
     }
-   
-    
-  
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+
+        var items = await App.Database.GetRoutesAsync();
+        RoutePicker.ItemsSource = (System.Collections.IList)items;
+        RoutePicker.ItemDisplayBinding = new Binding("RouteDetails");
+
+        var routel = (Reservation)BindingContext;
+
+        
+    }
+
+
+
 
 }

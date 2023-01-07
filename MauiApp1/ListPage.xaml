@@ -7,6 +7,7 @@
         <Editor Placeholder="Enter the title of the reservation"
  Text="{Binding Description}"
  HeightRequest="100" />
+        <Picker x:Name="RoutePicker" Title="Enter Route Name"/>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />

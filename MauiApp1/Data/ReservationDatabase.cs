@@ -17,7 +17,8 @@ namespace MauiApp1.Data
         {
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<Reservation>().Wait();
-           
+            _database.CreateTableAsync<Route>().Wait();
+
         }
        
        
@@ -40,5 +41,21 @@ namespace MauiApp1.Data
         {
             return _database.DeleteAsync(slist);
         }
+        public Task<List<Route>> GetRoutesAsync()
+        {
+            return _database.Table<Route>().ToListAsync();
+        }
+        public Task<int> SaveRouteAsync(Route route)
+        {
+            if (route.ID != 0)
+            {
+                return _database.UpdateAsync(route);
+            }
+            else
+            {
+                return _database.InsertAsync(route);
+            }
+        }
+
     }
 }
