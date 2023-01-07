@@ -31,9 +31,8 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Button Grid.Row="2" Grid.Column="0" Text="Add to Reservation"
-MaximumWidthRequest="200"
- Clicked="OnAddButtonClicked" />
+                <Button Grid.Row="2" Grid.Column="0" Text="Add to DateTime"
+MaximumWidthRequest="200" Clicked="OnAddButtonClicked" />
             </Grid>
         </StackLayout>
     </ContentPage.Content>

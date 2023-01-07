@@ -42,9 +42,9 @@ public partial class ListPage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        var shopl = (Reservation)BindingContext;
+        var rez = (Reservation)BindingContext;
 
-        listView.ItemsSource = await App.Database.GetListRouteAsync(shopl.ID);
+        listView.ItemsSource = await App.Database.GetListRouteAsync(rez.ID);
     }
 
 }

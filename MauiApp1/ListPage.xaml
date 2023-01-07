@@ -18,6 +18,8 @@
  Text="Delete"
  Clicked="OnDeleteButtonClicked"/>
         </Grid>
+        <Button Text="Add/Choose Item to buy" MaximumWidthRequest="300"
+Clicked="OnChooseButtonClicked"/>
         <ListView x:Name="listView"
  Margin="20">
             <ListView.ItemTemplate>

@@ -27,4 +27,20 @@ public partial class DateAndTimePage : ContentPage
         base.OnAppearing();
         listView.ItemsSource = await App.Database.GetDateAndTimeAsync();
     }
-}
+    async void OnAddButtonClicked(object sender, EventArgs e)
+    {
+        DateTimee p;
+        if (listView.SelectedItem != null)
+        {
+            p = listView.SelectedItem as DateTimee;
+            var lp = new ListDateAndTime()
+            {
+                ReservationID = sl.ID,
+                DateAndTimeID = p.ID
+            };
+            await App.Database.SaveListDateAndTimeAsync(lp);
+            p.ListDateAndTime = new List<ListDateAndTime> { lp };
+            await Navigation.PopAsync();
+        }
+        }
+            }

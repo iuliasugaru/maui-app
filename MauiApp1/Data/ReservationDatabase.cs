@@ -42,20 +42,7 @@ namespace MauiApp1.Data
             return _database.Table<Route>().ToListAsync();
         }
 
-        internal Task SaveReservationAsync(Reservation slist)
-        {
-            throw new NotImplementedException();
-        }
-
-        internal Task<IEnumerable> GetReservationsAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        internal Task DeleteReservationAsync(Reservation slist)
-        {
-            throw new NotImplementedException();
-        }
+        
         public Task<int> SaveDateAndTimeAsync(DateTimee DateAndTime)
         {
             if (DateAndTime.ID != 0)
@@ -97,14 +84,32 @@ namespace MauiApp1.Data
                 return _database.InsertAsync(listp);
             }
         }
-        public Task<List<Route>> GetListRouteAsync(int shoplistid)
+        public Task<List<Route>> GetListRouteAsync(int reservationid)
         {
             return _database.QueryAsync<Route>(
             "select P.ID, P.Description from Route P"
             + " inner join ListRoute LP"
-            + " on P.ID = LP.ProductID where LP.ReservationID = ?",
-            shoplistid);
+            + " on P.ID = LP.ReservationID where LP.ReservationID = ?",
+            reservationid);
         }
-
+        public Task<List<Reservation>> GetReservationAsync()
+        {
+            return _database.Table<Reservation>().ToListAsync();
+        }
+        public Task<int> SaveReservationAsync(Reservation slist)
+        {
+            if (slist.ID != 0)
+            {
+                return _database.UpdateAsync(slist);
+            }
+            else
+            {
+                return _database.InsertAsync(slist);
+            }
+        }
+        public Task<int> DeleteReservationAsync(Reservation slist)
+        {
+            return _database.DeleteAsync(slist);
+        }
     }
 }

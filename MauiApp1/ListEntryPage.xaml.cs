@@ -12,7 +12,7 @@ public partial class ListEntryPage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        listView.ItemsSource = await App.Database.GetReservationsAsync();
+        listView.ItemsSource = await App.Database.GetReservationAsync();
     }
     async void OnReservationAddedClicked(object sender, EventArgs e)
     {
